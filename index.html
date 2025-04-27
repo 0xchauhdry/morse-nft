@@ -134,7 +134,7 @@
         `;
         cardContainer.appendChild(card);
       });
-      document.getElementById('resultCount').textContent = `Showing ${Math.min(displayedCount, filteredData.length)} of ${filteredData.length} results`;
+      document.getElementById('resultCount').textContent = `Showing ${Math.min(displayedCount + pageSize, filteredData.length)} of ${filteredData.length} results`;
     }
 
     // Filter and sort data
@@ -165,8 +165,8 @@
       }
       const toDisplay = Math.min(pageSize, filteredData.length - displayedCount);
       if (toDisplay > 0) {
-        displayedCount += toDisplay;
         renderCards(filteredData, displayedCount, toDisplay);
+        displayedCount += toDisplay;
       }
     }
 
