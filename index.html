@@ -145,8 +145,8 @@
 
       filteredData = allData.filter(item => {
         const matchesSearch = item.Token_ID.toString().toLowerCase().includes(searchTerm);
-        const matchesRarity = !rarityFilter || item.Rarity === rarityFilter;
-        const matchesOwner = !ownerFilter || item.Owner === (ownerFilter == "null" ? null : "");
+        const matchesRarity = !rarityFilter || item.Rarity === rarityFilter || (rarityFilter === "null" && item.Rarity === null);
+        const matchesOwner = !ownerFilter || item.Owner === ownerFilter || (ownerFilter === "null" && item.Owner === null);
         return matchesSearch && matchesRarity && matchesOwner;
       });
 
